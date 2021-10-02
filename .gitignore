@@ -105,3 +105,6 @@ logs/*
 
 # macOS
 .DS_Store
+
+# custom
+.encryptpy.cfg
