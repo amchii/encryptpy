@@ -1,1 +1,2 @@
-cython
+cython~=0.29.0
+click~=8.0.0
