@@ -18,6 +18,16 @@ class CompileError(Exception):
     pass
 
 
+def suffix_match(s, regexs: typing.List[str]) -> bool:
+    for pattern in regexs:
+        if not pattern.startswith(r".*?"):
+            pattern = r".*?" + pattern
+
+        if re.match(pattern, s):
+            return True
+    return False
+
+
 def walk_dir(path, ignores: typing.List[str] = None):
     """
     :param path: file or directory
@@ -29,7 +39,10 @@ def walk_dir(path, ignores: typing.List[str] = None):
     files = []
     ignored_files = []
     if os.path.isfile(path):
-        files.append(path)
+        if suffix_match(path, ignores):
+            ignored_files.append(path)
+        else:
+            files.append(path)
         return files, ignored_files
 
     for dirpath, dirnames, filenames in os.walk(path):
@@ -41,14 +54,9 @@ def walk_dir(path, ignores: typing.List[str] = None):
 
             full_path = os.path.join(dirpath, filename)
             ignored = False
-            for ignore_pattern in ignores:
-                if not ignore_pattern.startswith(r".*?"):
-                    ignore_pattern = r".*?" + ignore_pattern
-
-                if re.match(ignore_pattern, full_path):
-                    ignored_files.append(full_path)
-                    ignored = True
-                    break
+            if suffix_match(filename, ignores):
+                ignored_files.append(full_path)
+                ignored = True
             if not ignored:
                 files.append(full_path)
 
