@@ -39,10 +39,11 @@ def walk_dir(path, ignores: typing.List[str] = None):
     files = []
     ignored_files = []
     if os.path.isfile(path):
-        if suffix_match(path, ignores):
-            ignored_files.append(path)
-        else:
-            files.append(path)
+        if path.endswith(".py"):
+            if suffix_match(path, ignores):
+                ignored_files.append(path)
+            else:
+                files.append(path)
         return files, ignored_files
 
     for dirpath, dirnames, filenames in os.walk(path):
