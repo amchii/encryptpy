@@ -149,7 +149,7 @@ def init(ctx, src_dir, build_dir, ignores, copy_ignores):
 @click.argument("commits", nargs=2)
 @click.pass_context
 def git_diff(ctx: Context, commits, build_dir, ignores, clean_py):
-    """Compile files between two COMMITS, see `git-diff`: `--name-only`"""
+    """Compile changed files between two COMMITS, see `git-diff`: `--name-only`"""
     repo = git.Git()
     try:
         paths = repo.diff(*commits, "--name-only").split()
