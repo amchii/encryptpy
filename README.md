@@ -1,7 +1,9 @@
 # Encrypt your Python project
-Use Cython to compile Python code to binary, single or multiple, also support `git-diff` to get changed files conveniently.
+Use Cython to compile Python code to binary and support `git-diff` to get changed files conveniently.
 
+## Installation
 
+`$ pip install encryptpy`
 
 ## Basic Usage
 
