@@ -6,6 +6,7 @@ from click import Context
 
 from .compiler import Compiler
 from .config import BaseConfig, Config, DictConfig
+from .utils import cleanup
 
 try:
     default_config = Config()
@@ -155,12 +156,21 @@ def git_diff(ctx: Context, commits, build_dir, ignores, clean_py):
     except git.GitCommandError as e:
         raise click.BadArgumentUsage(f"Git arguments error: \n{e}")
 
-    print("Diff files:")
+    click.echo("Diff files:")
     for path in paths:
-        print(path)
+        click.echo(path)
     ctx.invoke(
         run, paths=paths, build_dir=build_dir, ignores=ignores, clean_py=clean_py
     )
+
+
+@encryptpy.command()
+@click.argument("dirs", nargs=-1)
+def clean(dirs):
+    """Simply clean `build` and `__pycache__` directory in DIRS"""
+    if not dirs:
+        dirs = ["."]
+    cleanup(dirs)
 
 
 if __name__ == "__main__":
