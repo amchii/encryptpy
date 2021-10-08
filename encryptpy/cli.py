@@ -48,7 +48,7 @@ def encryptpy(ctx: Context, config):
 @click.option(
     "--clean-py",
     is_flag=True,
-    default=default_config.clean_py,
+    default=False,
     show_default=True,
     help="Clean the source .py.",
 )

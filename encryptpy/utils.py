@@ -41,7 +41,7 @@ def walk_dir(path, ignores: typing.List[str] = None):
 
             full_path = os.path.join(dirpath, filename)
             ignored = False
-            if suffix_match(filename, ignores):
+            if suffix_match(full_path, ignores):
                 ignored_files.append(full_path)
                 ignored = True
             if not ignored:
