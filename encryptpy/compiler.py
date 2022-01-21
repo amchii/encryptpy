@@ -118,26 +118,6 @@ def do_compile(paths, build_dir="build", clean_py=False, ignores=None):
             os.remove(dst_py)
 
 
-def copy_and_compile(src, build_dir="build", copy_ignores=None):
-    """
-    Copy src to build_dir and do compile, usually used for the first time.
-
-    :param src: src directory
-    :param build_dir: dst build directory
-    :param copy_ignores: ignore during copying
-    :return:
-    """
-    if os.path.exists(build_dir):
-        rm = input(f"The dst: {build_dir} is not empty, remove it (Y/n)? ")
-        if rm.lower() != "y":
-            sys.exit(1)
-        shutil.rmtree(build_dir)
-    shutil.copytree(
-        src, build_dir, ignore=(lambda *args: copy_ignores) if copy_ignores else None
-    )
-    os.chdir(build_dir)
-
-
 class Compiler:
     def __init__(self, config_obj: "BaseConfig" = None):
         self.config = config_obj
