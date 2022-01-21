@@ -114,6 +114,7 @@ def do_compile(paths, build_dir="build", clean_py=False, ignores=None):
         else:
             os.makedirs(os.path.dirname(dst), exist_ok=True)
             shutil.move(so_file_path, dst)
+        # Ensure that previously ignored .py files are removed when need to be compiled
         if os.path.exists(dst_py):
             os.remove(dst_py)
 

@@ -1,4 +1,4 @@
-[简体中文](README_CN.md)
+[简体中文](https://github.com/amchii/encryptpy/blob/main/README_CN.md)
 
 # Encrypt your Python project
 

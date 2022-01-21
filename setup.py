@@ -5,7 +5,6 @@ from setuptools import find_packages, setup
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
 with open(os.path.join(base_dir, "README.md"), encoding="utf-8") as fp:
-    fp.readline()  # remove README_CN.md link on PyPI
     long_description = fp.read()
 
 setup(
