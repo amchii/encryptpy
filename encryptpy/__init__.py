@@ -2,4 +2,4 @@
 from .compiler import Compiler
 from .config import BaseConfig, Config, DictConfig
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"
