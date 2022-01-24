@@ -3,14 +3,20 @@ import shutil
 import sys
 import tempfile
 import typing
-from distutils.command.build_py import build_py
-from distutils.core import setup
 
-from Cython.Build import cythonize
+from setuptools import setup
+from setuptools.command.build_ext import build_ext
+from setuptools.command.build_py import build_py
 
 from .config import BaseConfig
 from .utils import walk_dir
 
+from Cython.Build import cythonize  # isort:skip
+
+
+build_ext.run = lambda self: super(
+    build_ext, self
+).run()  # Do not build extensions in build directory if --inplace
 build_py.get_package_dir = lambda *args: ""
 
 

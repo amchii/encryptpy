@@ -1,3 +1,4 @@
+setuptools
 cython~=0.29.0
 click~=8.0.0
 gitpython~=3.0

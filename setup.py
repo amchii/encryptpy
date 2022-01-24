@@ -13,7 +13,7 @@ setup(
     python_requires=">=3.6",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    install_requires=["Cython", "Click", "GitPython~=3.0"],
+    install_requires=["setuptools", "Cython", "Click", "GitPython~=3.0"],
     entry_points={
         "console_scripts": [
             "encryptpy = encryptpy.__main__:main",
