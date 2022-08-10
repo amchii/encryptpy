@@ -116,9 +116,9 @@ build
 
 主要的缺陷来自于Cython，一些Python语法无法被正确地编译，以下是已知的问题：
 
-1. 赋值表达式（海象运算符） `:=`: [Implement PEP 572: Assignment Expressions #2636](https://github.com/cython/cython/issues/2636)
+1. ~~赋值表达式（海象运算符） `:=`: [Implement PEP 572: Assignment Expressions #2636](https://github.com/cython/cython/issues/2636)~~
 
-2. @dataclass: [Implement @dataclass for cdef classes #2903](https://github.com/cython/cython/issues/2903)
+2. ~~@dataclass:  [Implement @dataclass for cdef classes #2903](https://github.com/cython/cython/issues/2903)~~
 
 3. Class method decorators combination: [Combining @staticmethod with other decorators is broken #1434](https://github.com/cython/cython/issues/1434)
 
@@ -135,3 +135,7 @@ build
    但是可以改写为 `f = staticmethod(some_decorator(f))`。
 
 如果你有一些和上面一样的代码，要么改写要么简单地忽略它们，毕竟对大多数项目来说展示一些代码不影响其安全。
+
+
+
+**2022.08.10 UPDATE:** 好像前两个issue已经解决了。

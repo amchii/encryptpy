@@ -107,13 +107,13 @@ The `package_a/main.py` will be recompiled to `package_amain.cpython-38-x86_64-l
 
 The changed files between tag(or commit, or branch) 0.1 and 0.2 will be compiled.
 
-## Detect
+## Defect
 
 The defects mainly come from Cython - some Python code can not be compiled correctly. Here are known issues:
 
-1. Assignment Expressions `:=`: [Implement PEP 572: Assignment Expressions #2636](https://github.com/cython/cython/issues/2636)
+1. ~~Assignment Expressions `:=`: [Implement PEP 572: Assignment Expressions #2636](https://github.com/cython/cython/issues/2636)~~
 
-2. @dataclass: [Implement @dataclass for cdef classes #2903](https://github.com/cython/cython/issues/2903)
+2. ~~@dataclass: [Implement @dataclass for cdef classes #2903](https://github.com/cython/cython/issues/2903)~~
 
 3. Class method decorators combination: [Combining @staticmethod with other decorators is broken #1434](https://github.com/cython/cython/issues/1434)
 
@@ -130,3 +130,5 @@ The defects mainly come from Cython - some Python code can not be compiled corre
    but this can be rewrite to `f = staticmethod(some_decorator(f))`, it's ok.
 
 If you have some code like the above, you can refactor or just ignore them, it is safe enough for most projects.
+
+**2022.08.10 UPDATE:** It seems that the first two defects have been resolved.
