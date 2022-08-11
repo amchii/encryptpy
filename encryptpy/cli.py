@@ -19,7 +19,7 @@ except FileNotFoundError:
     "--config",
     default=".encryptpy.cfg",
     show_default=True,
-    help="The config file, ignore if given is invalid",
+    help="The config file, ignore if given is invalid.",
 )
 @click.pass_context
 def encryptpy(ctx: Context, config):
@@ -59,7 +59,7 @@ def encryptpy(ctx: Context, config):
 @click.pass_context
 def run(ctx, paths, build_dir, ignores, clean_py):
     """Compile given Python code files\n
-    If PATHS not provided, try to read them from config file, otherwise back to the current work directory
+    If PATHS not provided, try to read them from config file, otherwise back to the current work directory.
     """
     config_file = ctx.obj["config_file"]
     if os.path.isfile(config_file):
@@ -149,7 +149,7 @@ def init(ctx, src_dir, build_dir, ignores, copy_ignores):
 @click.argument("commits", nargs=2)
 @click.pass_context
 def git_diff(ctx: Context, commits, build_dir, ignores, clean_py):
-    """Compile changed files between two COMMITS, see `git-diff`: `--name-only`"""
+    """Compile changed files between two COMMITS, see `git-diff`: `--name-only`."""
     repo = git.Git()
     try:
         paths = repo.diff(*commits, "--name-only").split()
@@ -167,7 +167,7 @@ def git_diff(ctx: Context, commits, build_dir, ignores, clean_py):
 @encryptpy.command()
 @click.argument("dirs", nargs=-1)
 def clean(dirs):
-    """Simply clean `build` and `__pycache__` directory in DIRS"""
+    """Simply clean `build` and `__pycache__` directory in DIRS."""
     if not dirs:
         dirs = ["."]
     cleanup(dirs)
