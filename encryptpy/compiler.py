@@ -16,7 +16,7 @@ from Cython.Build import cythonize  # isort:skip
 
 build_ext.run = lambda self: super(
     build_ext, self
-).run()  # Do not build extensions in build directory if --inplace
+).run()  # Do not build extensions in build directory even if --inplace
 build_py.get_package_dir = lambda *args: ""
 
 
@@ -120,7 +120,7 @@ def do_compile(paths, build_dir="build", clean_py=False, ignores=None):
         else:
             os.makedirs(os.path.dirname(dst), exist_ok=True)
             shutil.move(so_file_path, dst)
-        # Ensure that previously ignored .py files are removed when need to be compiled
+        # Ensure that previously ignored .py files will be removed when need to be compiled - that's ignored to not ignored
         if os.path.exists(dst_py):
             os.remove(dst_py)
 
