@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "encryptpy"
+dynamic = ["version"]
+description = "Use Cython to compile Python code to binary and support git-diff to get changed files conveniently."
+readme = "README.md"
+authors = [
+    { name = "Amchii", email = "finethankuandyou@gmail.com" }
+]
+
+license = "MIT"
+license-files = ["LICENSE*"]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3 :: Only",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Compilers"
+]
+dependencies = [
+    "cython",
+    "click",
+    "gitpython"
+]
+
+[project.urls]
+Homepage = "https://github.com/amchii/encryptpy"
+Repository = "https://github.com/amchii/encryptpy"
+
+[project.scripts]
+encryptpy = "encryptpy.__main__:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "encryptpy.__version__" }
+
+[tool.setuptools.packages.find]
+exclude = ["tests*"]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+extend-select = [
+    "I", # isort
+    "B", # flake8-bugbear
+    "W", # pycodestyle
+    "C4", # flake8-comprehensions
+]
+ignore = [
+    "E501", # line too long, handled by black
+    "B008", # do not perform function calls in argument defaults
+    "C901", # too complex
+    "W191", # indentation contains tabs
+    "B019", # Use of `functools.lru_cache` or `functools.cache` on methods can lead to memory leaks
+    "B904"  # raise without from inside except
+]
+
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "function"
